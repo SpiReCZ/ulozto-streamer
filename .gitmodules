@@ -1,0 +1,4 @@
+[submodule "ulozto-downloader"]
+	path = ulozto-downloader
+	url = https://github.com/setnicka/ulozto-downloader.git
+    branch = 3.3.1
