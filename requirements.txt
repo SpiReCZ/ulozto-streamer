@@ -1,0 +1,10 @@
+requests
+Pillow
+ansicolors
+numpy
+pysocks
+stem
+tflite-runtime[auto-captcha]
+uvicorn
+fastapi
+starlette
