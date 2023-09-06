@@ -111,8 +111,8 @@ async def initiate(url: str, parts: Optional[int] = default_parts):
 
             # temp_dir: str = "", do_overwrite: bool = False, conn_timeout=DEFAULT_CONN_TIMEOUT
             future = asyncio.get_event_loop() \
-                .run_in_executor(executor, downloader.download, url, parts,
-                                 download_path, download_path, True, const.DEFAULT_CONN_TIMEOUT)
+                .run_in_executor(executor, downloader.download, url, parts, "",
+                                 download_path, download_path, True, const.DEFAULT_CONN_TIMEOUT, False)
             future.add_done_callback(downloader_callback)
 
             while downloader.total_size is None:
@@ -164,7 +164,7 @@ def downloader_callback(future: Future):
 
 
 def sigint_handler(sig, frame):
-    if tor is not None and tor.torRunning:
+    if tor is not None and tor.tor_process is not None:
         tor.stop()
     if downloader is not None:
         downloader.terminate()
